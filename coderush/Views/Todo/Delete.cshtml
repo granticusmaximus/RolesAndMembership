@@ -1,0 +1,60 @@
+﻿@model Todo
+@{
+    ViewData["Title"] = "Delete Todo";
+}
+
+<!-- Content Start -->
+<div class="content-wrapper">
+    <!-- Heading Start -->
+    <section class="heading">
+        <h1 class="mb-2">@ViewData["Title"]</h1>
+        <div class="titles">
+            @await Html.PartialAsync(PartialView.StatusMessage, TempData[StaticString.StatusMessage])
+        </div>
+    </section><!-- Heading End -->
+    <div class="row">
+        <div class="col-12">
+            <form asp-controller="Todo" asp-action="SubmitDelete" method="post">
+                <article class="card mb-4">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Delete todo item? this process is irreversible</h4>
+                    </div>
+                    <div class="card-body">
+                        <input type="hidden" asp-for="TodoId" />
+                        <div class="form-group">
+                            <label asp-for="TodoItem"></label>
+                            <div class="input-group">
+                                <input asp-for="TodoItem" class="form-control" disabled/>
+                                <span class="input-group-addon" aria-hidden="true"><span class="glyphicon glyphicon-ok text-success"></span></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Is Done</label>
+                            <div class="form-check">
+                                <label class="custom-checkbox variation3 mb-0">
+                                    <input asp-for="IsDone" class="form-check-input" disabled/>
+                                    <i class="input-helper"></i>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/Todo/Index" class="btn btn-default">Back</a>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </div>
+                </article>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Content End -->
+
+@section Styles{
+
+}
+
+@section Scripts {
+    
+}
+
+
