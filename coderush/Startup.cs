@@ -38,10 +38,11 @@ namespace coderush
                 options.HttpOnly = Microsoft.AspNetCore.CookiePolicy.HttpOnlyPolicy.Always;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            
+            var connection = "Data Source=watsynDB.db";
+            services.AddDbContext<ApplicationDbContext>
+                (options => options.UseSqlite(connection));
+
+
             /// Get Custom Identity Default Options
             IConfigurationSection identityDefaultOptionsConfigurationSection = Configuration.GetSection("IdentityDefaultOptions");
 
